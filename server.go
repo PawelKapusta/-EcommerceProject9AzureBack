@@ -1,24 +1,21 @@
 package main
 
 import (
-	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"log"
 	"net/http"
-	"os"
 )
 
 func main() {
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	//err := godotenv.Load(".env")
+	//if err != nil {
+	//	log.Fatal("Error loading .env file")
+	//}
 
 	e := echo.New()
 
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"http://localhost:3000", os.Getenv("FRONTEND_LINK")},
+		AllowOrigins: []string{"https://front-ebiznes.azurewebsites.net", "http://localhost:3000"},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 		AllowMethods: []string{http.MethodGet, http.MethodPost},
 	}))
